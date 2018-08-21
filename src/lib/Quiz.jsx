@@ -12,6 +12,7 @@ class Quiz extends Component {
     this.state = {
       step: 0,
       title: quiz.quizTitle,
+      description: quiz.quizDescription,
       questions: quiz.questions,
       currentQuestion: quiz.questions[0],
       answers: [],
@@ -52,14 +53,16 @@ class Quiz extends Component {
 	 }
 
   render() {
-    const {title, questions, currentQuestion, answers, correctAns, endQuiz} = this.state;
+    const {title, description, questions, currentQuestion, answers, correctAns, endQuiz, totalQuestions, step} = this.state;
     return (
       <div className="react-quiz-container">
         <h2>{title}</h2>
+        <p>{description}</p>
         { endQuiz===true? (
           <Result questions={questions} answers={answers} correctAns={correctAns}/>
         ): (
           <div>
+            <div className="progress"><p>Question {step+1} of {totalQuestions}</p></div>
            <div className="row">
             <div className="col-12 col">
              <Question currentQuestion={currentQuestion} />

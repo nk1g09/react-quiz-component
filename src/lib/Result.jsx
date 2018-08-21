@@ -7,12 +7,13 @@ class Result extends Component {
   constructor(props){
     super(props);
     this.state = {
-      score : 0
+      score : 0,
+      percentageScore : 0
     }
   }
 
   componentDidMount(){
-    const {score} = this.state;
+    const {score, percentageScore} = this.state;
     const {correctAns, answers} = this.props;
     let tmpScore = score;
     answers.map((answer,index)=>{
@@ -20,15 +21,16 @@ class Result extends Component {
           tmpScore = tmpScore + 1;
         }
         return this.setState({
-          score: tmpScore
+          score: tmpScore,
+          percentageScore: (tmpScore/this.props.questions.length)*100
         })
-    })
-
+    }) 
   }
 
   render() {
-    const {score} = this.state;
+    const {score, percentageScore} = this.state;
     const {questions, answers, correctAns} = this.props;
+  
     const renderQuestion =
       questions.map((question, index)=>{
             return (
@@ -47,15 +49,18 @@ class Result extends Component {
             )
           })
 
-    const renderResult =
+    const renderResult = 
           <div>
-           <h1> Your score: <span class="badge secondary">{score}/{questions.length}</span></h1>
+           <h1> Your score: <span className="badge secondary">{score}/{questions.length}</span></h1>
           </div>
-        
+    const scoreMsg = console.log('Your score was ' + percentageScore + ' percent');
+
+ 
     return (
       <div className="result-container">
           {renderResult}
           {renderQuestion}
+          {scoreMsg}
       </div>
     );
   }

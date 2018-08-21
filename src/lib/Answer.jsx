@@ -17,7 +17,7 @@ class Answer extends Component {
         let value = answerKey[(index)] + ". " + answer
         return (
           ( questionType=='text' && (<button className="btn-large" key={index} data-value={answer} onClick={() => this.props.handleClick(index)}>{value}</button>) ) ||
-          ( questionType=='photo' && (<button><img key={index} alt="" src={answer} onClick={() => this.props.handleClick(index)}/></button>) )
+          ( questionType=='photo' && (<button key={index}><img alt="" src={answer} onClick={() => this.props.handleClick(index)}/></button>) )
         )
       })
     const renderAnswerInResult = 
@@ -32,7 +32,7 @@ class Answer extends Component {
          let value = answerKey[(index)] + ". " + answer
         return (
           ( questionType=='text' && (<button className={`${c} btn-large`} key={index} data-value={answer}>{value}</button>) ) ||
-          ( questionType=='photo' && (<button className={`${c} img-answer`}><img key={index} alt="" src={answer}/></button>) )
+          ( questionType=='photo' && (<button className={`${c} img-answer`} key={index}><img alt="" src={answer}/></button>) )
         )
       })
 

@@ -1,6 +1,5 @@
-const quiz =  {
-  "quizTitle": "React Quiz Modification Demo",
-  "quizDescription": "Example quiz using the react-quiz-component code which has been modified",
+export const quiz =  {
+  "quizTitle": "React Quiz Component Demo",
   "questions": [
     {
       "question": "How can you access the state of a component from inside of a member function?",
@@ -54,5 +53,3 @@ const quiz =  {
     }
   ]
 } 
-
-export default quiz
